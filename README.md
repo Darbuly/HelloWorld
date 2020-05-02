@@ -1,2 +1,2 @@
 # HelloWorld
-If you can say "HelloWorld",then you own the world!
+If you can say "HelloWorld",then you can own the world!

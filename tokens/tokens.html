@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多次请求token</title>
+</head>
+<body>
+	<div>
+		<button onclick="ranDomRqCallback()">随机请求模拟Callback法</button>
+		<button onclick="ranDomRqPromise()">随机请求模拟Promise法</button>
+	</div>
+	<script>
+		//统计数据
+		var tokenCount = 0
+		//模拟本地缓存的token
+		var tokenStorage = ''
+		var tokenLock = false
+		var reqQueue = []
+		//token请求模型
+		const getToken = (callback)=>{
+			tokenCount++
+			setTimeout(()=>{
+				console.log(`累计token次数为${tokenCount}`)
+				tokenStorage = 'tokenA'
+				callback()
+			},1000)
+		}
+		//Request封装模拟
+		function requestByCallback(r){
+			console.log(`准备计算半径为${r.data}`)
+			if(!tokenStorage){
+				//如果token木有缓存
+				if(!tokenLock){//如果没人去拿token
+					//上锁
+					tokenLock = true
+					//请求
+					getToken(()=>{
+						//拿到了token
+						//排队
+						reqQueue.push(r)
+						console.log(reqQueue)
+						reqQueue.map(requestByCallback)
+						reqQueue = []
+						//解锁
+						tokenLock = false
+					})
+				}else{
+					//发现有人去拿token了
+					reqQueue.push(r) //乖乖排队吧
+				}
+			}else{
+				//有token了，就返回请求结果(假设这些请求都是求一个圆的面积)
+				let S = 2*3.14*r.data*r.data
+				r.callback(S)
+			}
+		}
+
+		function ranDomRqCallback(){
+			//取随机数
+			let r = {}
+			r.data = (Math.random()*10).toFixed(2)
+			r.callback = (s)=>{
+				console.log(`'请求完毕，r= ${r.data} 的圆的面积为${s}`)
+			}
+			let S = requestByCallback(r)
+			
+		}
+
+		function requestByPromise(r){
+			return new Promise((resolve,reject)=>{
+				console.log(`准备计算半径为${r}`)
+				if(!tokenStorage){
+					//如果token木有缓存
+					console.log(`半径为 ${r} 的无法计算，等待token请求`)
+					if(!tokenLock){//如果没人去拿token
+						//上锁
+						tokenLock = true
+						//请求
+						getToken(()=>{
+							//拿到了token
+							//排队
+							let p = ()=>requestByPromise(r).then((res)=>{
+								resolve(res)//把队列形态的promise 的resolve的res 在这里完成 两级resolve
+							})
+							reqQueue.push(p)
+
+							console.log('队列形态打印',reqQueue)
+							reqQueue.forEach((v)=>{
+								v()
+							})//IE8以下不支持foreach
+							let all = Promise.all(reqQueue)
+							all.then((res)=>{
+								console.log("看下队列形态的执行效果",res)	//看下队列形态的执行效果
+							})
+							reqQueue = []
+							//解锁
+							tokenLock = false
+						})
+					}else{
+						//发现有人去拿token了
+						 //乖乖排队吧
+						let p = ()=>requestByPromise(r).then((res)=>{
+							resolve(res)//把队列形态的promise 的resolve的res 在这里完成 两级resolve
+						})
+						reqQueue.push(p)
+					}
+				}else{
+					//有token了，就返回请求结果(假设这些请求都是求一个圆的面积)
+					let S = 2*3.14*r*r
+					resolve(S)
+				}
+			})
+		}
+
+		function ranDomRqPromise(){
+			//取随机数
+			let r = (Math.random()*10).toFixed(2)
+			requestByPromise(r).then((s)=>{
+				console.log(`执行完毕,半径为${r}的圆的面积为${s}`)
+			})
+		}
+	</script>
+</body>
+</html>

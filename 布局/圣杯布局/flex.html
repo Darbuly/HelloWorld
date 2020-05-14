@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>FLEX实现圣杯布局</title>
+		<style>
+		* {
+			box-sizing: content-box;/* 伸缩项目自动box-sizing:border-box，所以需调整为content-box */
+			margin: 0;
+			padding: 0;
+		}
+		/*1. 容器声明*/
+		body {
+			display: flex;
+			flex-direction: column;/* 纵向铺排 */
+		}
+		/*2. 头尾声明*/
+		header,
+		footer {
+			flex: 0 0 50px;/* 必须，头、脚尺寸固定，不放大、不缩小 */
+			background: #3f3f3f;
+		}
+		/*3. 中间部分的容器声明*/
+		.main {
+			display:flex;
+			flex-direction:row;/* 非必须，默认横向铺排 */
+			flex: 1; /*非必须，因为默认就是1，主要是声明中间部分在排除头尾高度之后自由分配富裕空间高度*/
+		}
+		/*4. 中间部分的middle声明*/
+		.middle {
+			background:red;
+			height: 500px;
+			/*
+			块级元素未主动设置宽度或未被子元素撑起宽度，浏览器默认为块级元素分配宽度为可使用的全部宽度，比如全屏宽。
+			*/
+			flex:1;
+		}
+		/*5. 中间部分的left、right声明*/
+		.left,
+		.right {
+			height:300px;
+			background:blue;
+			flex: 0 0 100px;/* 必须，左右两列固定宽 */
+		}
+		/*6. left在最左*/
+		.left {
+			order: -1;/* 必须，让left居于左侧 */
+		}
+		</style>
+	</head>
+	<body>
+		<header>header</header>
+		<div class="main">
+			<div class="middle"></div>
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+		<footer>footer</footer>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FLEX实现商品列表布局2 指定富裕空间</title>
+	<style>
+		/*1. 容器声明*/
+		ul {
+            list-style:none;
+            display: flex;/*必须，flex声明*/
+            flex-wrap: wrap;/*必须，指定可以换行*/
+			width: 300px;/*必须，一定要固定宽度，100%都不行*/
+            margin:auto;/*非必须，为了在中间好看*/
+            border:10px solid black;
+		}
+		/*2. 项目的声明*/
+		li {
+            width:100px;/*必须，商品项目的宽度*/
+            height: 100px;/*必须，商品项目的高度度*/
+            background:#ddd;
+            border:1px solid red;
+		}
+		/*3. 指定富裕空间的多少*/
+		li:nth-child(even){
+			margin-left: 20px;/*这里指定20px中间宽*/
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

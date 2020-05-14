@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FLEX实现垂直居中布局</title>
+	<style>
+		/*1. 容器的声明*/
+       .container {
+            height: 500px;	/*必须，不然高度小于内元素可就无意义了*/
+            background: #ddd;
+            display: flex;
+            justify-content: center;/*必须，横向居中*/
+            align-items: center;/*必须，纵向居中*/
+        }
+        /*2. 项目的声明*/
+        .item {
+			width: 100px;
+			height: 100px;
+            border: 1px solid red;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+        <div class="item">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FLEX实现手机页面布局</title>
+	<style>
+		/* 1. 容器声明 */
+        .container{
+            height:100vh;/*高度100%个单位的视窗高度*/
+            display:flex;
+            flex-direction:column;/*竖着铺排*/
+        }
+        /* 2. 头尾固定 */
+        header {
+            height: 100px;/*竖着铺排*/
+			flex-shrink: 0; /*不计算移除空间，即高度有效*/
+            background: #ddd;
+        }
+        footer { 
+            height: 100px;/*竖着铺排*/
+			flex-shrink: 0; /*不计算移除空间，即高度有效*/
+            background: #ddd;
+        }
+        main{
+            flex-grow:1;/*非必须，因为默认为1，不膨胀*/
+            overflow:auto;/*必须*/
+        }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <header>header高度固定</header>
+        <main>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+            <p>段落</p>
+        </main>
+        <footer>footer高度固定</footer>
+    </div>
+</body>
+</html>

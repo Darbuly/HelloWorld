@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基于递归法实现n级分类算法-以3级分类为例</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+	<div>请代开调试工具看调试数据</div>
+	<div id="app">
+		<h1>{{title}}</h1>
+		<button @click="showCategory">点击分类显示</button>
+		<div v-for="item in cateList2" :key="item.id">
+			<h2>{{item.name}}</h2>
+			<div v-for="sitem in item.child" :key="sitem.id">
+					<h3 >&nbsp;&nbsp;&nbsp;&nbsp;{{sitem.name}}</h3>
+					<div v-for="titem in sitem.child" :key="titem.id">
+						<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{titem.name}}</h4>
+					</div>		
+			</div>
+		</div>
+	</div>
+</body>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				title:"基于迭代法实现n级分类算法-以3级分类为例",
+				cateList:[{
+							id: 1,
+							pid: 0,
+							name: '设备',
+							type:1
+						},
+						{
+							id: 2,
+							pid: 0,
+							name: '服装',
+							type:1
+						},
+						{
+							id: 3,
+							pid: 1,
+							name: '手机',
+							type:2
+						},
+						{
+							id: 4,
+							pid: 1,
+							name: '游戏机',
+							type:2
+						},
+						{
+							id: 5,
+							pid: 3,
+							name: '全面屏手机',
+							type:3
+						},
+						{
+							id: 6,
+							pid: 4,
+							name: '小霸王游戏机',
+							type:3
+						},
+						{
+							id: 7,
+							pid: 4,
+							name: 'VR游戏机',
+							type:3
+						},
+						{
+							id: 8,
+							pid: 3,
+							name: '老人手机机',
+							type:3
+						},
+						{
+							id: 9,
+							pid: 2,
+							name: '女性服装',
+							type:2
+						},
+						{
+							id: 10,
+							pid: 2,
+							name: '男性服装',
+							type:2
+						},
+
+						{
+							id: 11,
+							pid: 10,
+							name: '男-衬衫',
+							type:3
+						},
+						{
+							id: 12,
+							pid: 10,
+							name: '男-长裤',
+							type:3
+						},
+						{
+							id: 13,
+							pid: 9,
+							name: '女-连衣裙',
+							type:3
+						},
+						{
+							id: 14,
+							pid: 9,
+							name: '女-衬衫',
+							type:3
+						}
+					],
+				cateList2:[]
+			},
+			methods:{
+				showCategory(){
+					console.log("将进行分类数据包如下：",this.cateList)
+					//递归实现分类无限级别分类
+					this.cateList2 = this.unlimitedForLevel(this.cateList)
+					console.log(this.cateList2)
+				},
+				unlimitedForLevel(cate,pid=0){
+					let arr = []
+					cate.forEach(item=>{
+						if(item.pid===pid){
+							let a = item
+							a.child = this.unlimitedForLevel(cate,item.id)
+							arr.push(a)
+						}
+					})
+					return arr
+				}
+			}
+		})
+	</script>
+</html>

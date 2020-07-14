@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Gotham Rounded;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .timeline-box {
+            background: #fff;
+            position: relative;
+            padding-top: 8vw;
+            height: 84.9489vh;
+            overflow-y: scroll;
+        }
+
+        .timeline-main {
+            position: relative;
+        }
+
+        .timeline-main>h1 {
+            font-size: 4.26666vw;
+            background: #fff;
+            z-index: 1;
+            position: relative;
+            color: #383950;
+            margin-left: 33%;
+            margin-left: -moz-calc(35% - 1.866667vw);
+            margin-left: -webkit-calc(35% - 1.866667vw);
+            margin-left: calc(35% - 1.866667vw);
+        }
+
+        .timeline-main>.timeline-h1 {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            margin-bottom: 4.53333vw;
+        }
+
+        .timeline-main>.timeline-h1>h1 {
+            font-size: 4.26666vw;
+            background: #fff;
+            z-index: 1;
+            position: relative;
+            color: #383950;
+            margin-left: 3.2%;
+
+        }
+
+        .timeline-main>.timeline-h1>span {
+            width: 1.866667vw;
+            height: 1.866667vw;
+            background-color: #618AFF;
+            border-radius: 50%;
+            margin-left: 5.8666667%;
+            z-index: 2;
+        }
+
+
+        .timeline-line {
+            position: absolute;
+            left: 6.666667%;
+            top: 2.4vw;
+            padding-bottom: 2.6666666vw;
+            height: 96%;
+            width: 0.266666666vw;
+            background: #618AFF;
+            z-index: 0
+        }
+
+        .timeline-h2 {
+            margin-bottom: 4.8vw;
+            overflow: hidden;
+        }
+
+        .timeline-h2>.left {
+            display: flex;
+            float: left;
+            align-content: center;
+            align-items: center;
+            width: 77.3333333333%;
+        }
+
+        .timeline-h2>.left>span {
+            width: 1.6vw;
+            height: 1.6vw;
+            border: .26666666vw solid #618AFF;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-left: 7.40620%;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .timeline-h2>.left>.timestamp {
+            color: red;
+            font-size: 3.2vw;
+            font-weight: 700;
+            text-align: right;
+            color: #383950;
+            margin-left: 2.93333333vw;
+            width: 10.6896551%;
+        }
+
+        .timeline-h2>.left>h2 {
+            font-size: 3.7333333333vw;
+            font-weight: 400;
+            color: #383950;
+            line-height: 5.333333vw;
+            margin-left: 2.6666666vw;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+        }
+
+        .timeline-h2>.left>.status {
+            font-size: 3.2vw;
+            text-align: left;
+            color: #85899b;
+            margin-left: .8vw;
+            width: 17.241379%;
+            flex-shrink: 0;
+        }
+
+        .timeline-h2>.right {
+            float: right;
+            width: 22.66666%;
+        }
+
+        .timeline-h2>.right>.balances {
+            font-size: 4.26666vw;
+            font-weight: 500;
+            text-align: right;
+            line-height: 5.3333333vw;
+            margin-right: 5.333333vw;
+        }
+
+        .add {
+            color: #618AFF;
+        }
+
+        .add::before {
+            content: '+'
+        }
+
+        .sub {
+            color: #ff7e2e;
+        }
+
+        .sub::before {
+            content: '-'
+        }
+
+        .timeline-h3 {
+            width: 86.6666666vw;
+            float: right;
+            background: #f2f4f7;
+            margin-top: 1.6vw;
+            margin-right: 2.66666666vw;
+            /* display: none; */
+
+        }
+
+        .timeline-h3>.content {
+            padding: 2.9333333vw 2.66666666vw 2.9333333vw 4.8vw;
+        }
+
+        .timeline-h3>.content>.item>.left {
+            float: left;
+            margin-bottom: 5.33333333vw;
+        }
+
+        .timeline-h3 h3 {
+            font-size: 3.73333333vw;
+            font-weight: 300;
+            text-align: left;
+            color: #383950;
+        }
+
+
+        .timeline-h3>.content>.item>.right {
+            font-size: 3.7333333vw;
+            font-weight: Book;
+            text-align: right;
+            color: #383950;
+            float: right;
+        }
+
+        .timeline-h3 .detail a {
+            display: block;
+            font-size: 3.7333333vw;
+            font-weight: W3;
+            text-align: left;
+            color: #618aff;
+            text-decoration: underline;
+            width: 100%;
+            text-align: center;
+        }
+
+        .item-sub h3 {
+            padding-left: 5.33333333vw;
+            font-size: 3.2vw;
+            text-align: left;
+            color: #383950;
+        }
+
+        .btn-group {
+            display: flex;
+        }
+
+
+        .dropdown-trigger {
+            width: 50%;
+            height: 13.33333vw;
+            position: relative;
+            outline: 0;
+            white-space: nowrap;
+            text-align: center;
+            background-image: none;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            border-bottom: .2666666vw solid #F2F4F7;
+            cursor: pointer;
+            -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            padding: 1.066666vw 4vw;
+            font-size: 3.733333vw;
+            border-radius: .5333333vw;
+            color: rgba(0, 0, 0, 0.65);
+            background: #fff;
+        }
+
+        .btn-group .dropdown-trigger:first-child {
+            border-right: .2666666vw solid #F2F4F7;
+        }
+
+        .arrow {
+            color: #CED0D7;
+        }
+
+        .dropdown-trigger .date {
+            font-size: 3.73333vw;
+            font-weight: W3;
+            text-align: left;
+            color: #383950;
+            margin-right: 2.6666666vw;
+        }
+
+        .dropdown-trigger .value {
+            display: inline-block;
+            width: 27.2vw;
+            font-size: 3.73333333vw;
+            font-weight: Book;
+            text-align: left;
+            color: #618aff;
+            line-height: 4.8vw;
+        }
+
+        .bottom-fix {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 16vw;
+            border-top: .266666666vw solid #E6E9F0;
+            background: #ffffff;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 555;
+        }
+
+        .withdraw-btn {
+            width: 16.8vw;
+            height: 8vw;
+            line-height: 8vw;
+            background: #618aff;
+            border-radius: 0.8vw;
+            text-align: center;
+            color: #ffffff;
+            font-size: 3.7333vw;
+            margin-right: 5.3333vw;
+        }
+
+        .font-14px {
+            font-size: 3.73333333vw;
+        }
+
+        .font-12px {
+            font-size: 3.2vw;
+        }
+
+        .withdraw-count {
+            margin-left: 6.93333333vw;
+        }
+
+        .withdraw-count .sum-money {
+            font-size: 5.333333333vw;
+            font-weight: 500;
+            text-align: left;
+            color: #618aff;
+            line-height: 2.13333333vw;
+        }
+
+        .withdraw-count .count {
+            font-size: 3.2vw;
+            font-weight: 500;
+            text-align: left;
+            color: #618aff;
+            line-height: 2.1333333vw;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="timeline-box ">
+        <div class="timeline-main">
+            <div class="timeline-line"></div>
+            <div class="timeline-h1">
+                <span></span>
+                <h1>2020.05.26</h1>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">16:33</div>
+                    <h2>申请提现</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">400</div>
+                </div>
+            </div>
+            <div class="timeline-h1">
+                <span></span>
+                <h1>2020.05.20</h1>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">16:33</div>
+                    <h2>通信 单卡89套餐</h2>
+                    <div class="status">未提现</div>
+                </div>
+                <div class="right">
+                    <div class="balances add">89</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix" onclick="toggle(this)">
+                <div class="left"> <span></span>
+                    <div class="timestamp">14:30</div>
+                    <h2>售出1×格力空调1匹节xxxxxxxx</h2>
+                    <div class="status">不可提现</div>
+                </div>
+                <div class="right">
+                    <div class="balances add">24.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">12:30</div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix" onclick="toggle(this)">
+                <div class="left"> <span></span>
+                    <div class="timestamp">09:30</div>
+                    <h2>售出 饮水杯</h2>
+                    <div class="status">已提现</div>
+                </div>
+                <div class="right">
+                    <div class="balances add">68.6</div>
+                </div>
+                <div class="timeline-h3">
+                    <div class="content ">
+                        <div class="item clearfix">
+                            <div class="left">
+                                <h3>商品总价（自有）</h3>
+                            </div>
+                            <div class="right">70</div>
+                        </div>
+                        <div class="item item-sub clearfix">
+                            <div class="left">
+                                <h3>平台费用（10%）</h3>
+                            </div>
+                            <div class="right">7</div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="left">
+                                <h3>营销费用（10%）</h3>
+                            </div>
+                            <div class="right">7</div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="left">
+                                <h3>积分费用（固定1%）</h3>
+                            </div>
+                            <div class="right">-0.7</div>
+                        </div>
+                        <div class="detail"><a href="">查看详情</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">14:30</div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp"></div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp"></div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">14:30</div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">14:30</div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+            <div class="timeline-h2 clearfix">
+                <div class="left"> <span></span>
+                    <div class="timestamp">14:30</div>
+                    <h2>买入1×风扇</h2>
+                    <div class="status"></div>
+                </div>
+                <div class="right">
+                    <div class="balances sub">59.12</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-fix">
+        <div class="withdraw-count">
+            <span class="font-14px">小计</span>
+            <span class="sum-money">32,453.5</span>
+            <span class="font-12px">共</span>
+            <span class="count">352</span>
+            <span class="font-12px">笔</span>
+        </div>
+        <a href="#">
+            <div class="withdraw-btn">提现</div>
+        </a>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

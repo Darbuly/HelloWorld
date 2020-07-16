@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        (function () {
+            function changeRootFont() {
+                var designWidth = 750, rem2px = 100;
+                document.documentElement.style.fontsize =
+                    ((window.innerWidth / designWidth) * rem2px) + 'px';
+                //iphone6: (375 / 750) * 100 + 'px';
+                //直接将设计稿的尺寸小数点往左移动两位即可，如 width：750px->7.5rem(全屏宽) height: 80px->0.8rem
+
+                document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.style.fontsize;
+            }
+            changeRootFont();
+            window.addEventListener('resize', changeRootFont, false);
+        })();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

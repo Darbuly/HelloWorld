@@ -7,7 +7,9 @@
             //==================王文威  临时开发调试代码 结束======================
             return view('mystore.salesInfo', compact('dev'));
 
-
+@if($dev==true)
+    <div style="position: absolute;left: 0;top: 0;z-index: 100;color:red">开发视图</div>
+@endif
 
 
             @if($dev==true)

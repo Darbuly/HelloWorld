@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+
         (function () {
             function changeRootFont() {
+                /**
+                *   designWidth: 这个是设计宽，
+
+                *   rem2px: 这个是rem到px的计算比例，如设计稿中100px，我要1rem，那么rem2px 就是100
+
+                **/
+
                 var designWidth = 750, rem2px = 100;
+
                 document.documentElement.style.fontsize =
                     ((window.innerWidth / designWidth) * rem2px) + 'px';
                 //iphone6: (375 / 750) * 100 + 'px';

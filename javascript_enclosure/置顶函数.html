@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let topTimer = null;
+    const Topfun = () => {
+        topTimer = setInterval(() => {
+            if (document.documentElement && document.documentElement.scrollTop) //IE
+            {
+                if (document.documentElement.scrollTop <= 0) {
+                    clearInterval(topTimer);
+                } else {
+                    window.scrollBy(0, -100);
+                }
+            } else { //Chrome不支持documentElement.scrollTop
+                if (document.body.scrollTop <= 0) {
+                    clearInterval(topTimer);
+                } else {
+                    window.scrollBy(0, -100);
+                }
+            }
+        }, 10);
+    }
+</script>
+
+</html>

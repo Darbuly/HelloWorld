@@ -1,3 +1,5 @@
+CREATE FUNCTION `GetObjInJArrayByIndex`(`JsonArray` TEXT, `idx` INT) RETURNS varchar(255) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
+    DETERMINISTIC
 BEGIN
         DECLARE propValStr TEXT;
         DECLARE propEndPos INT DEFAULT 0;

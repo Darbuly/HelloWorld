@@ -1,3 +1,5 @@
+CREATE FUNCTION `GetJVal`(`JsonObject` TEXT, `propName` VARCHAR(255)) RETURNS varchar(255) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
+    DETERMINISTIC
 BEGIN
         DECLARE propValStr TEXT;
         DECLARE propEndPos INT DEFAULT 0;
@@ -11,7 +13,7 @@ BEGIN
         ELSE
        
         SELECT propStartPos+LENGTH(propName) INTO propEndPos;
-
+       
         SELECT SUBSTRING(JsonObject,propEndPos) INTO propValStr;
        
         SELECT SUBSTRING_INDEX(propValStr,'"',2) INTO propValStr;

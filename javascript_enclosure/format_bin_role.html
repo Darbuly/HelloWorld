@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const formatRole = (user_role) => {
+            let arr_nore = user_role.data.slice().reverse()
+            let buffer = new Uint32Array(arr_nore).buffer
+            let num = new Uint32Array(buffer)[0]
+            let arr = [];
+            for (let i = 0; i < 32; i++) {
+                if ((num >> i & 1) === 1) {
+                    arr.push(i + 1);
+                }
+            }
+            return arr;
+        }
+    </script>
+</body>
+
+</html>

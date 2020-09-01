@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var sdtime1 = new Date('2018-03-22 16:14:55')
+
+        var sdtime2 = sdtime1.setHours(sdtime1.getHours() - 1)//小时
+
+        var sdtime3 = new Date().setDate((new Date().getDate() - 7))//7天
+        var sdtime4 = new Date().setMonth((new Date().getMonth() - 1))//一个月
+        var sdtime5 = new Date().setFullYear((new Date().getFullYear() - 1))//一年
+
+        console.log(new Date(sdtime2).Format("yyyy-MM-dd HH:mm:ss"));
+
+    </script>
+</body>
+
+</html>

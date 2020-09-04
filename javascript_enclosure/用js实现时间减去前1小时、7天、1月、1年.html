@@ -11,7 +11,7 @@
     <script>
 
         var sdtime1 = new Date('2018-03-22 16:14:55')
-
+        new Date(new Date().toLocaleDateString()).getTime() 	//当天0点
         var sdtime2 = sdtime1.setHours(sdtime1.getHours() - 1)//小时
 
         var sdtime3 = new Date().setDate((new Date().getDate() - 7))//7天

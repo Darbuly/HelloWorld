@@ -18,6 +18,19 @@
         var sdtime4 = new Date().setMonth((new Date().getMonth() - 1))//一个月
         var sdtime5 = new Date().setFullYear((new Date().getFullYear() - 1))//一年
 
+
+
+        time_gt = new Date(`${new Date().getFullYear()}-01-01 00:00:00`).getTime();//本年第一天
+        time_lt = new Date(Number(new Date().getFullYear()) + 1, 0, 0).getTime();//本年最后一天
+
+
+        time_gt = new Date(new Date().getFullYear(),new Date().getMonth(),1).getTime();	//本月第一天
+        time_lt = new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getTime();//本月最后一天
+
+
+        time_gt = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate() - new Date().getDay()).getTime();	//本周第一天
+        time_lt = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate() - new Date().getDay()+7,0).getTime();	////本周最后一天
+
         console.log(new Date(sdtime2).Format("yyyy-MM-dd HH:mm:ss"));
 
     </script>

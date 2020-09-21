@@ -19,7 +19,7 @@ END
 
 CREATE FUNCTION `func_get_splitStringTotal`(fstring varchar(10000),fdelimiter varchar(50)) RETURNS int(11) 
 BEGIN 
- return 1+( length(fstring) - length(replace(fstring,fdelimiter,'')) );
+ return 1+( length(fstring) - length(replace(fstring,fdelimiter,'')) )/length(fdelimiter);
 END
 
 CREATE FUNCTION `func_splitString` 

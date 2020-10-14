@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2020-10-13 10:19:44
+Date: 2020-10-14 14:29:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,4 +26,4 @@ CREATE TABLE `proc_logs` (
   `message` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

@@ -15,10 +15,17 @@ BEGIN
 					SELECT propStartPos+LENGTH(propName) INTO propEndPos;
 				 
 					SELECT SUBSTRING(JsonObject,propEndPos) INTO propValStr;
-				 
+
 					SELECT SUBSTRING_INDEX(propValStr,'"',1) INTO propValStr;
+
+					if propValStr=':' then 
+						SELECT SUBSTRING(JsonObject,propEndPos) INTO propValStr;
+						SELECT SUBSTRING_INDEX(propValStr,'"',2) INTO propValStr;
+						SELECT SUBSTRING_INDEX(propValStr,'"',-1) INTO propValStr;
+					ELSE
+						SELECT SUBSTRING(propValStr,2,LENGTH(propValStr)-2) INTO propValStr;
+					end if;
 					
-					SELECT SUBSTRING(propValStr,2,LENGTH(propValStr)-2) INTO propValStr;
 				
 				 
 					SELECT CAST(propValStr AS SIGNED) INTO strValue;

@@ -30,32 +30,33 @@ promotion_type:活动类型
 
 【商品为单位】
 
-// promotion (促销表)
-{
- id
-valid_start_time:有效期-开始时间
-valid_end_time:有效期-结束时间
-status:活动状态：1进行中，2停止
-promotion_type:活动类型
 
-}
-
-// promotion_variant (商品-促销中间表)
+// promotion_variant (秒杀表)
 {
     'id': 1,
+	created_at
+	updated_at 
+
     'product_id': 1,//商品表id
-    'promotion_id': 1,//促销表
-    'promotion_type': 'snap_up',//促销表，秒杀类 snap_up
+	valid_start_time:有效期-开始时间
+	valid_end_time:有效期-结束时间
+
+			//时段
+
+//周期类 每周  月  年  
+
+
+
+    status:活动状态：1进行中，2停止
+    'promotion_type': 'snap_up',//秒杀类 snap_up
     'discount_rate': 0.5,//折扣率
-    'stock': 100, // 库存
-    'sold': 0, // 销量
-    'quantity_limit': 1, // 限购
-    'enabled': 1,
-    'rest': { 个性化参数
-        product_name: 'xxx', // 秒杀期间商品的标题
-       ...
-    }
+    'stock': 100, // 限购总量
+    'quantity_limit': 1, // 个人限购
+
+
 }
+
+
 
 
 

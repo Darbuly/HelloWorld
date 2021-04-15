@@ -1,0 +1,7 @@
+ // ¼àÌý»Ø³µ¼ü
+
+        $(document).keyup(function(event){
+            if(event.keyCode ==13){
+                login_btn();
+            }
+        });
